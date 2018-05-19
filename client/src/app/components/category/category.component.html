@@ -1,0 +1,7 @@
+<div class="categories" *ngFor="let category of categories">
+  <mat-card class="category" *ngIf="category.isAvailable">
+    <mat-card-content>
+      {{ category.name }}
+    </mat-card-content>
+  </mat-card>
+</div>

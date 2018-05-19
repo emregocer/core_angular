@@ -1,0 +1,8 @@
+.category-create-form{
+    display:flex;
+    flex-flow: column;
+}
+
+.category-create-form .back-button{
+    margin-top: 6px;
+}

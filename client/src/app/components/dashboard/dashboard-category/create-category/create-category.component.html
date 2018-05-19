@@ -1,0 +1,59 @@
+<div class="category-create-form-container">
+  <mat-card>
+    <mat-card-content>
+      <mat-card-header></mat-card-header>
+      <form name="create-category-form" class="category-create-form" #createForm="ngForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="categoryName.invalid && (categoryName.dirty || categoryName.touched)">
+          <div *ngIf="categoryName?.errors?.minlength">
+            Category name must be at least 4 characters.
+          </div>
+          <div *ngIf="categoryName?.errors?.required">
+            Name is required.
+          </div>
+        </div>
+        <mat-form-field>
+          <input matInput [(ngModel)]="category.name" placeholder="Category name" id="category-name" name="category-name"
+          required #categoryName="ngModel" minlength="4">
+        </mat-form-field>
+        <div *ngIf="categoryDesc.invalid && (categoryDesc.dirty || categoryDesc.touched)" >
+          <div *ngIf="categoryDesc?.errors?.minlength">
+            Category description must be at least 10 characters.
+          </div>
+          <div *ngIf="categoryDesc?.errors?.required">
+            Description is required.
+          </div>
+        </div>
+        <mat-form-field>
+          <input matInput [(ngModel)]="category.description" placeholder="Category description" id="category-description" name="category-description"
+          required #categoryDesc="ngModel" minlength="10">
+        </mat-form-field>
+        <div *ngIf="categoryIsLocked.invalid && (categoryIsLocked.dirty || categoryIsLocked.touched)">
+          <div *ngIf="categoryIsLocked?.errors?.required">
+            Please select a value.
+          </div>
+        </div>
+        <mat-form-field>
+          <mat-select [(ngModel)]="category.isLocked" placeholder="Is Locked?" id="isLocked" name="isLocked"
+          required #categoryIsLocked="ngModel">
+            <mat-option value="true">Yes</mat-option>
+            <mat-option value="false">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="categoryIsAvailable.invalid && (categoryIsAvailable.dirty || categoryIsAvailable.touched)">
+          <div *ngIf="categoryIsAvailable?.errors?.required">
+            Please select a value.
+          </div>
+          </div>
+        <mat-form-field>
+          <mat-select [(ngModel)]="category.isAvailable" placeholder="Is Available?" id="isAvailable" name="isAvailable"
+          required #categoryIsAvailable="ngModel">
+            <mat-option value="true">Yes</mat-option>
+            <mat-option value="false">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button type="submit" [disabled]='!createForm.valid' mat-raised-button color="primary">Save</button>
+        <button class="back-button" mat-raised-button color="warn" (click)="this.ciService.goBack()">Back</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

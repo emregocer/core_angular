@@ -1,0 +1,8 @@
+.category-edit-form{
+    display:flex;
+    flex-flow: column;
+}
+
+.category-edit-form .back-button{
+    margin-top: 6px;
+}

@@ -1,0 +1,37 @@
+.category-table-card{
+    padding: 0;
+}
+
+.card-header-content{
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.category-table-card .create-button{
+    color: #3f51b5;
+    font-weight: bold;
+    text-decoration-line: none;
+    text-transform: uppercase;
+}
+
+.category-table-card .create-button a:link{
+    text-decoration: none;
+}
+
+.category-table-card .create-button a:visited {
+    text-decoration: none;
+}
+
+.category-table-card .create-button a:hover{
+    text-decoration: none;
+}
+
+.category-table-card .create-button a:active{
+    text-decoration: none;
+}
+
+.category-table-card .delete-button{
+    
+}

@@ -1,0 +1,66 @@
+<mat-card class="category-table-card">
+  <mat-card-header>
+    <div class="card-header-content">
+      <button mat-icon-button class="create-button">
+        <a routerLink="create">Create</a>
+      </button>
+      <mat-input-container>
+        <input matInput placeholder="Search categories" #input>
+      </mat-input-container>
+      <button mat-icon-button class="delete-button">
+          <mat-icon>delete</mat-icon>
+        </button>
+    </div>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="category-table-container">
+      <mat-table [dataSource]="categoryDS" matSort>
+
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+          <mat-cell *matCellDef="let category">{{ category.id }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+          <mat-cell *matCellDef="let category">{{ category.name }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="isAvailable">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Availability </mat-header-cell>
+          <mat-cell *matCellDef="let category">{{ category.isAvailable }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="isLocked">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Lock Status </mat-header-cell>
+          <mat-cell *matCellDef="let category">{{ category.isLocked }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+          <mat-cell *matCellDef="let category">{{ category.description }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef>
+            Actions
+          </mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button mat-icon-button (click)="editCategory(row)">
+              <mat-icon>mode_edit</mat-icon>
+            </button>
+            <button mat-icon-button (click)="openDeleteCategoryDialog(row)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: columns;" (click)="onRowClicked(row)"></mat-row>
+
+      </mat-table>
+      <mat-paginator [length]="this.category_count" [pageSize]="10" [pageSizeOptions]="[5, 10]"></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>

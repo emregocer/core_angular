@@ -1,0 +1,24 @@
+<div class="page-container" [class.app-is-mobile]="mobileQuery.matches">
+    <app-toolbar></app-toolbar>
+
+    <app-progress-bar></app-progress-bar>
+
+    <mat-sidenav-container class="app-sidenav-container">
+        <mat-sidenav #sideNav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                        [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <a mat-list-item routerLink="/">Mainpage</a>
+                <a mat-list-item routerLink="dashboard">Dashboard</a>
+                <a mat-list-item routerLink="dashboard/category">Edit categories</a>
+                <a mat-list-item routerLink=".">Option 3</a>
+                <a mat-list-item routerLink=".">Option 4</a>
+                <a mat-list-item routerLink=".">Option 5</a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="page-content">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>
